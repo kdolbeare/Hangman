@@ -15,6 +15,7 @@ function addStartButton () {
 }
 
 function clearStartButton () {
+  //clear high scores:
   var removeTable = document.getElementById("table");
   if(removeTable) {
     removeTable.parentNode.removeChild(removeTable);

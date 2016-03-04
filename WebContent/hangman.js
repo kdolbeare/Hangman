@@ -8,6 +8,7 @@ function init() {
 	scores.addEventListener("click", listScoresClicked);
     addScoreButton();
     addStartButton();
+    keyStrokes();
 }
 
 function getData(url, callback) {

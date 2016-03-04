@@ -2,17 +2,17 @@ function getPhrase() {
   getData("rest/phrase", showPhrase);
 }
 
-
+var word;
 function showPhrase (phrase) {
-  var body = document.querySelector("body");
-  var wordDiv = document.getElementById("wordArea");
+  // var body = document.querySelector("body");
+  var wordDiv = document.getElementById("wordDiv");
   var correct = document.createElement("ul");
   correct.setAttribute("id", "correctWord")
-  var word = phrase.gamePhrase;
+  word = phrase.gamePhrase;
 
   for (var i=0; i<word.length; i++) {
     var guess = document.createElement("li");
-    guess.setAttribute("class", "guess");
+    // guess.setAttribute("class", "guess");
     if(word[i] === " ") {
       guess.innerHTML = " ";
     } else {
@@ -20,5 +20,17 @@ function showPhrase (phrase) {
     }
     wordDiv.appendChild(correct);
     correct.appendChild(guess);
+  }
+}
+
+function checkGuess(letter) {
+  console.log(word);
+  console.log("test");
+
+  if (word.includes(letter)){
+    console.log("found the letter");
+  }
+  else {
+    console.log("in checkGuess else");
   }
 }
