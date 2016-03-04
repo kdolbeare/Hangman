@@ -1,11 +1,12 @@
 function getPhrase() {
   getData("rest/phrase", showPhrase);
 }
-
-var word;
-var guess;
-var guesses = [];
-var wrongGuesses = [];
+var counter = 0; //counting correct letters placed
+var space = 0; //counting spaces in the word/phrase
+var word; //randomly chosen phrase
+var guesses = []; //array of guess LI's
+var allGuesses = []; //all letters guessed
+var misses = []; //all wrong letters guessed
 function showPhrase (phrase) {
   // var body = document.querySelector("body");
   var wordDiv = document.getElementById("wordDiv");
@@ -14,10 +15,11 @@ function showPhrase (phrase) {
   word = phrase.gamePhrase;
 
   for (var i=0; i<word.length; i++) {
-    guess = document.createElement("li");
+    var guess = document.createElement("li");
     guess.setAttribute("class", "guess");
     if(word[i] === " ") {
       guess.innerHTML = " ";
+      space += 1;
     } else {
       guess.innerHTML = "_";
     }
@@ -29,25 +31,38 @@ function showPhrase (phrase) {
 }
 
 function checkGuess(letter) {
+var body = document.querySelector("body");
+var wrongLetters = document.getElementById("wrongLetters");
 for(var i=0; i<word.length; i++) {
-  if(word[i] === letter) {
+    console.log(allGuesses.indexOf(word[i]));
+  if(word[i] === letter && allGuesses.indexOf(letter) === -1) {
     guesses[i].innerHTML = letter;
-      console.log(guesses[i]);
+    counter += 1;
   }
-  else if (!word.includes(letter)){
-    console.log("in checkGuess else");
-    wrongGuesses.push(letter);
+  else if (!word.includes(letter) && allGuesses.indexOf(letter) === -1){
+    misses.push(letter);
     break;
   }
 }
-// guesses.push(letter);
-console.log(guesses);
-console.log(wrongGuesses);
+if(allGuesses.indexOf(letter) === -1) {
+  allGuesses.push(letter);
+}
+wrongLetters.innerHTML="Incorrect guesses: " +misses;
+body.appendChild(wrongLetters);
+checkWin();
+}
 
-  // if (word.includes(letter)){
-  //   console.log("found the letter");
-  // }
-  // else {
-  //   console.log("in checkGuess else");
-  // }
+function checkWin() {
+  var body = document.querySelector("body");
+  var youWin = document.getElementById("youWin");
+  if (counter + space === word.length) {
+    stopInterval();
+        //not working:
+    removeEventListener("keydown", function(){});
+    youWin.innerHTML = "You Win!!"
+    body.appendChild(youWin);
+
+
+  }
+
 }

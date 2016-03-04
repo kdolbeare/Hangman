@@ -1,8 +1,3 @@
-// onload = function() {
-//   console.log("loaded timer");
-//   addStartButton();
-// }
-
 function addStartButton () {
   // var body = document.querySelector("body");
   var header = document.querySelector("header");
@@ -23,7 +18,7 @@ function clearStartButton () {
   var button = document.getElementById("start");
   button.parentNode.removeChild(button);
   startInterval(1);
-  addStopButton();
+  // addStopButton();
   getPhrase();
 }
 
@@ -35,27 +30,33 @@ function startInterval(i) {
     i++;}, 1000);
   }
 
-function addStopButton () {
-  // var body = document.querySelector("body");
-  var header = document.querySelector("header");
-  var stopButton = document.createElement("button");
-  stopButton.setAttribute("id", "stop");
-  var stopButtonName = document.createTextNode("Stop Timer!");
-  stopButton.appendChild(stopButtonName);
-  stopButton.addEventListener("click", clearStopButton);
-  header.appendChild(stopButton);
-}
-
-function clearStopButton() {
-  var button = document.getElementById("stop");
-  button.parentNode.removeChild(button);
-  stopInterval();
-  addStartButton();
-}
-
+// function addStopButton () {
+//   // var body = document.querySelector("body");
+//   var header = document.querySelector("header");
+//   var stopButton = document.createElement("button");
+//   stopButton.setAttribute("id", "stop");
+//   var stopButtonName = document.createTextNode("Stop Timer!");
+//   stopButton.appendChild(stopButtonName);
+//   stopButton.addEventListener("click", clearStopButton);
+//   header.appendChild(stopButton);
+// }
+//
+// function clearStopButton() {
+//   var button = document.getElementById("stop");
+//   button.parentNode.removeChild(button);
+//   stopInterval();
+//   addStartButton();
+// }
+var myTime;
 function stopInterval() {
+  //stopping extra add Initials buttons
+  var removeAdd = document.getElementById("addButton");
+  if(removeAdd) {
+    removeAdd.parentNode.removeChild(removeAdd);
+  }
   clearInterval(intervalId);
   var t = document.getElementById("timer").innerHTML;
-  var myTime = t.substring(6, t.length);
+  myTime = t.substring(6, t.length);
+  addScoreButton();
   console.log(myTime);
 }

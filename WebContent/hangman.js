@@ -6,7 +6,7 @@ onload = function() {
 function init() {
 	var scores = document.getElementById("scores");
 	scores.addEventListener("click", listScoresClicked);
-    addScoreButton();
+    // addScoreButton();
     addStartButton();
     keyStrokes();
 }
@@ -71,14 +71,13 @@ function listScores(scores) {
     table.appendChild(tr);
   }
   body.appendChild(table);
-
 }
 
 function addScoreButton() {
   var body = document.querySelector("body");
   var addButton = document.createElement("button");
   addButton.setAttribute("id", "addButton");
-  var addButtonName = document.createTextNode("Add Your Score");
+  var addButtonName = document.createTextNode("Add Your Initials");
   addButton.appendChild(addButtonName);
   addButton.addEventListener("click", addScore);
   body.appendChild(addButton);
@@ -89,24 +88,6 @@ function addScore(e) {
   var body = document.querySelector("body");
   var scoreForm = document.createElement("form");
   scoreForm.setAttribute("id", "scoreForm");
-
-  var time = document.createElement("input");
-  time.type = "text";
-  time.name = "time";
-  //need to get from timer eventually
-  scoreForm.appendChild(time);
-
-  //need to calculate
-  var numGuesses = document.createElement("input");
-  numGuesses.type = "text";
-  numGuesses.name = "numGuesses";
-  scoreForm.appendChild(numGuesses);
-
-  //need to calculate
-  var numMisses = document.createElement("input");
-  numMisses.type = "text";
-  numMisses.name = "numMisses";
-  scoreForm.appendChild(numMisses);
 
   var initials = document.createElement("input");
   initials.type = "text";
@@ -121,11 +102,15 @@ function addScore(e) {
   body.appendChild(scoreForm);
   submit.addEventListener("click", function(e) {
     e.preventDefault();
-    var obj = {time:time.value, numGuesses:numGuesses.value, numMisses:numMisses.value, initials:initials.value};
+    var obj = {time:myTime, numGuesses:allGuesses.length, numMisses:misses.length, initials:initials.value};
     updateData("PUT", "rest/score", obj);
     var remove = document.getElementById("scoreForm");
+    var removeAdd = document.getElementById("addButton");
     if(remove) {
       remove.parentNode.removeChild(remove);
+    }
+    if(removeAdd) {
+      removeAdd.parentNode.removeChild(removeAdd);
     }
   });
 }
