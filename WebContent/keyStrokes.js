@@ -7,7 +7,6 @@ function keyStrokes()
       var code = e.keyCode;
       var letter = String.fromCharCode(code).toLowerCase();
       console.log(letter);
-      //create:
       checkGuess(letter);
     }
     else
