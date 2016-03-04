@@ -3,20 +3,19 @@ function getPhrase() {
 }
 
 var word;
-var correct;
 var guess;
 var guesses = [];
 var wrongGuesses = [];
 function showPhrase (phrase) {
   // var body = document.querySelector("body");
   var wordDiv = document.getElementById("wordDiv");
-  correct = document.createElement("ul");
+  var correct = document.createElement("ul");
   correct.setAttribute("id", "correctWord")
   word = phrase.gamePhrase;
 
   for (var i=0; i<word.length; i++) {
     guess = document.createElement("li");
-    // guess.setAttribute("class", "guess");
+    guess.setAttribute("class", "guess");
     if(word[i] === " ") {
       guess.innerHTML = " ";
     } else {
@@ -24,27 +23,24 @@ function showPhrase (phrase) {
     }
     wordDiv.appendChild(correct);
     correct.appendChild(guess);
+    guesses.push(guess);
   }
+  console.log(guesses.length);
 }
-//try adding if word.includes back in:
+
 function checkGuess(letter) {
-var wordDiv = document.getElementById("wordDiv");
 for(var i=0; i<word.length; i++) {
   if(word[i] === letter) {
-    console.log("found: " + letter);
-    letter = word[i];
-    guess.innerHTML = letter;
-    wordDiv.appendChild(correct);
-    correct.appendChild(guess);
+    guesses[i].innerHTML = letter;
+      console.log(guesses[i]);
   }
-  else if (word[i] !== letter){
+  else if (!word.includes(letter)){
     console.log("in checkGuess else");
     wrongGuesses.push(letter);
     break;
   }
-
 }
-guesses.push(letter);
+// guesses.push(letter);
 console.log(guesses);
 console.log(wrongGuesses);
 
