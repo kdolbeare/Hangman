@@ -57,6 +57,5 @@ function stopInterval() {
   clearInterval(intervalId);
   var t = document.getElementById("timer").innerHTML;
   myTime = t.substring(6, t.length);
-  addScoreButton();
   console.log(myTime);
 }

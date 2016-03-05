@@ -6,7 +6,6 @@ onload = function() {
 function init() {
 	var scores = document.getElementById("scores");
 	scores.addEventListener("click", listScoresClicked);
-    // addScoreButton();
     addStartButton();
     keyStrokes();
 }
@@ -46,10 +45,13 @@ function listScoresClicked() {
 }
 
 function listScores(scores) {
-  var removeTable = document.getElementById("table");
-  if(removeTable) {
-    removeTable.parentNode.removeChild(removeTable);
-  }
+  // var removeTable = document.getElementById("table");
+  // if(removeTable) {
+  //   removeTable.parentNode.removeChild(removeTable);
+  // }
+  // var removeTimer = document.getElementById("timer")
+  // removeTimer.innerHTML= "";
+  clearData();
   var body = document.querySelector("body");
   var table = document.createElement("table");
   table.setAttribute("id", "table");
@@ -148,6 +150,12 @@ function addScore(e) {
   });
 }
 function clearData() {
+  var removeTable = document.getElementById("table");
+  if(removeTable) {
+    removeTable.parentNode.removeChild(removeTable);
+  }
+  var removeTimer = document.getElementById("timer")
+  removeTimer.innerHTML= "";
   var removeMisses = document.getElementById("wrongLetters");
   if(removeMisses) {
     removeMisses.parentNode.removeChild(removeMisses);
@@ -158,4 +166,6 @@ function clearData() {
   }
   var removeYouWin = document.getElementById("youWin");
   removeYouWin.innerHTML = "";
+  var removeYouLose = document.getElementById("youLose");
+  removeYouLose.innerHTML = "";
 }
