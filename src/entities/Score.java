@@ -1,5 +1,8 @@
 package entities;
 
+
+import java.util.Comparator;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "score")
-public class Score
+public class Score implements Comparator<Score>
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,5 +85,46 @@ public class Score
 	public void setInitials(String initials)
 	{
 		this.initials = initials;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + numGuesses;
+		result = prime * result + numMisses;
+		result = prime * result + time;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Score other = (Score) obj;
+		if (numGuesses != other.numGuesses)
+			return false;
+		if (numMisses != other.numMisses)
+			return false;
+		if (time != other.time)
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compare(Score o1, Score o2)
+	{ 		
+		if(o1.time > o2.time)
+			return 1;
+		if(o1.time == o2.time)
+			return 0;
+		else 
+			return -1;	
 	}
 }

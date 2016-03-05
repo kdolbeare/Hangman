@@ -47,8 +47,10 @@ for(var i=0; i<word.length; i++) {
 if(allGuesses.indexOf(letter) === -1) {
   allGuesses.push(letter);
 }
-wrongLetters.innerHTML="Incorrect guesses: " +misses;
-body.appendChild(wrongLetters);
+if(misses.length>0) {
+  wrongLetters.innerHTML="Incorrect guesses: " +misses;
+  body.appendChild(wrongLetters);
+}
 checkWin();
 }
 
@@ -57,8 +59,7 @@ function checkWin() {
   var youWin = document.getElementById("youWin");
   if (counter + space === word.length) {
     stopInterval();
-        //not working:
-    removeEventListener("keydown", function(){});
+    removeEventListener("keydown", listenToKeys);
     youWin.innerHTML = "You Win!!"
     body.appendChild(youWin);
 

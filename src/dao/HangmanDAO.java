@@ -1,6 +1,7 @@
 package dao;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -26,6 +27,7 @@ public class HangmanDAO
 		String query = "select s from Score s";
 		Query q = em.createQuery(query, Score.class);
 		List<Score> scores = q.getResultList();
+		Collections.sort(scores, new Score());
 		return scores;
 	}
 	
