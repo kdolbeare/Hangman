@@ -1,5 +1,5 @@
 function addStartButton () {
-  // var body = document.querySelector("body");
+
   var header = document.querySelector("header");
   var startButton = document.createElement("button");
   startButton.setAttribute("id", "start");
@@ -7,6 +7,7 @@ function addStartButton () {
   startButton.appendChild(startButtonName);
   startButton.addEventListener("click", clearStartButton);
   header.appendChild(startButton);
+
 }
 
 //after clicking start button
@@ -19,10 +20,17 @@ function clearStartButton () {
   var button = document.getElementById("start");
   button.parentNode.removeChild(button);
   startInterval(1);
+  addInstructions();
   // addStopButton();
   getPhrase();
 }
 
+function addInstructions () {
+  var body = document.querySelector("body");
+  var instructions = document.getElementById("instructions");
+  instructions.innerHTML = "To begin, please choose a letter on your keyboard";
+  body.appendChild(instructions);
+}
 //adding timer
 var intervalId;
 function startInterval(i) {

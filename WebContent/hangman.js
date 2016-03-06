@@ -134,7 +134,7 @@ function addScore(e) {
     if(remove) {
       remove.parentNode.removeChild(remove);
     }
-    listScores();
+    clearData();
     playAgain();
   });
 }
@@ -165,7 +165,13 @@ function clearData() {
   var removeAdd = document.getElementById("addButton");
   if(removeAdd) {
     removeAdd.parentNode.removeChild(removeAdd);
+  }
   var remove = document.getElementById("scoreForm");
-  remove.innerHTML = "";
+  if(remove) {
+    remove.parentNode.removeChild(remove);
+  }
+  var removeInstructions = document.getElementById("instructions");
+  if(removeInstructions) {
+    removeInstructions.parentNode.removeChild(removeInstructions);
   }
 }

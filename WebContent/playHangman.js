@@ -35,7 +35,7 @@ function showPhrase (phrase) {
 function getCategory(phrase) {
   var body = document.querySelector("body");
   var category = document.getElementById("category");
-  category.innerHTML = "The category is " + phrase.category;
+  category.innerHTML = "Category: " + phrase.category;
   body.appendChild(category);
 }
 
@@ -54,7 +54,7 @@ function getClueButton(phrase) {
 function getClue(phrase) {
   var body = document.querySelector("body");
   var clue = document.getElementById("clue");
-  clue.innerHTML = "Your clue: " +phrase.clue;
+  clue.innerHTML = phrase.clue;
   body.appendChild(clue);
 }
 
@@ -97,7 +97,7 @@ function checkWin() {
   }
 }
 
-//adds to the hangman until game is over
+//adds to the hangman until end of game with a loss
 function hangingGuy() {
   var image = document.getElementById("man");
   var body = document.querySelector("body");
@@ -136,7 +136,7 @@ function playAgain() {
   var header = document.querySelector("header");
   var againButton = document.createElement("button");
   againButton.setAttribute("id", "again");
-  var againButtonName = document.createTextNode("To Play Again!");
+  var againButtonName = document.createTextNode("Play Again!");
   againButton.appendChild(againButtonName);
   againButton.addEventListener("click", function() {
     console.log("in function");
