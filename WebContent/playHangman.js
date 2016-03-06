@@ -125,6 +125,7 @@ function hangingGuy() {
     man.src="Hangman-6.png";
     playAgain();
     stopInterval();
+    removeEventListener("keydown", listenToKeys);
     var youLose = document.getElementById("youLose");
     youLose.innerHTML = "Sorry ... game over :(";
     body.appendChild(youLose);
@@ -148,16 +149,17 @@ function playAgain() {
   var againButtonName = document.createTextNode("Play Again!");
   againButton.appendChild(againButtonName);
   header.appendChild(againButton);
-  // againButton.addEventListener("click", goToIndex);
+  againButton.addEventListener("click", goToIndex);
 
-  againButton.addEventListener("click", function() {
-    console.log("in function");
-    window.location.assign("index.html");
-  });
+  // againButton.addEventListener("click", function(e) {
+  //   e.preventDefault();
+  //   console.log("in function");
+  //   window.location.assign("index.html");
+  // });
 
 }
 
-// var goToIndex = function() {
-//   console.log("in function");
-//   window.location.assign("index.html");
-// }
+var goToIndex = function() {
+  console.log("in function");
+  window.location.assign("index.html");
+}
