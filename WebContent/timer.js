@@ -21,7 +21,6 @@ function clearStartButton () {
   button.parentNode.removeChild(button);
   startInterval(1);
   addInstructions();
-  // addStopButton();
   getPhrase();
 }
 
@@ -39,24 +38,6 @@ function startInterval(i) {
     div.innerHTML = "Timer: " +i;
     i++;}, 1000);
   }
-
-// function addStopButton () {
-//   // var body = document.querySelector("body");
-//   var header = document.querySelector("header");
-//   var stopButton = document.createElement("button");
-//   stopButton.setAttribute("id", "stop");
-//   var stopButtonName = document.createTextNode("Stop Timer!");
-//   stopButton.appendChild(stopButtonName);
-//   stopButton.addEventListener("click", clearStopButton);
-//   header.appendChild(stopButton);
-// }
-//
-// function clearStopButton() {
-//   var button = document.getElementById("stop");
-//   button.parentNode.removeChild(button);
-//   stopInterval();
-//   addStartButton();
-// }
 
 //stop timer & capture time
 var myTime;

@@ -94,7 +94,8 @@ Button {
 }
 #clueButton{
   position:absolute;
-  bottom: 300px;
+  /*bottom: 300px;*/
+  top:65%;
   left: 20px;
 }
 #scoreForm {
@@ -112,7 +113,8 @@ Button {
 }
 #clue {
   position:absolute;
-  bottom: 270px;
+  /*bottom: 270px;*/
+  top: 75%;
   left: 20px;
   font-size: 1.25em;
   font-family: Lucida Console;
@@ -134,7 +136,8 @@ Button {
   position:absolute;
   margin-left: 20px;
   font-size: 1.25em;
-  bottom: 370px;
+  top: 60%;
+  /*bottom: 370px;*/
   font-family: Lucida Console;
 }
 #youWin {

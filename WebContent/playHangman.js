@@ -94,6 +94,10 @@ function checkWin() {
     addScoreButton();
     youWin.innerHTML = "You Win!!"
     body.appendChild(youWin);
+    var removeInstructions = document.getElementById("instructions");
+    if(removeInstructions) {
+      removeInstructions.parentNode.removeChild(removeInstructions);
+    }
   }
 }
 
@@ -123,7 +127,12 @@ function hangingGuy() {
     var youLose = document.getElementById("youLose");
     youLose.innerHTML = "Sorry ... game over :(";
     body.appendChild(youLose);
-    playAgain();
+    playAgain()();
+    var removeInstructions = document.getElementById("instructions");
+    if(removeInstructions) {
+      removeInstructions.parentNode.removeChild(removeInstructions);
+    }
+
     break;
     default:
     man.src = "Hangman-0.png";
@@ -133,14 +142,15 @@ function hangingGuy() {
 
 //button to refresh and play again
 function playAgain() {
+  console.log("in play again");
   var header = document.querySelector("header");
   var againButton = document.createElement("button");
   againButton.setAttribute("id", "again");
   var againButtonName = document.createTextNode("Play Again!");
   againButton.appendChild(againButtonName);
+  header.appendChild(againButton);
   againButton.addEventListener("click", function() {
     console.log("in function");
-    window.location.href = "index.html";
-});
-  header.appendChild(againButton);
+    window.location.assign("index.html");
+  });
 }
