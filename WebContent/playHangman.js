@@ -28,7 +28,34 @@ function showPhrase (phrase) {
     correct.appendChild(guess);
     guesses.push(guess);
   }
-  console.log(guesses.length);
+  getCategory(phrase);
+  getClueButton(phrase);
+}
+
+function getCategory(phrase) {
+  var body = document.querySelector("body");
+  var category = document.getElementById("category");
+  category.innerHTML = "The category is " + phrase.category;
+  body.appendChild(category);
+}
+
+function getClueButton(phrase) {
+  var body = document.querySelector("body");
+  var clueButton = document.createElement("button");
+  clueButton.setAttribute("id", "clueButton");
+  var clueButtonName = document.createTextNode("Need a clue?");
+  clueButton.appendChild(clueButtonName);
+  clueButton.addEventListener("click", function(){
+    getClue(phrase);
+  });
+  body.appendChild(clueButton);
+}
+
+function getClue(phrase) {
+  var body = document.querySelector("body");
+  var clue = document.getElementById("clue");
+  clue.innerHTML = "Your clue: " +phrase.clue;
+  body.appendChild(clue);
 }
 
 //takes in letter keyed to check it
@@ -72,26 +99,26 @@ function checkWin() {
 
 //adds to the hangman until game is over
 function hangingGuy() {
-  var image = document.getElementById("img");
+  var image = document.getElementById("man");
   var body = document.querySelector("body");
   switch (misses.length) {
     case 1:
-    img.src="Hangman-1.png";
+    man.src="Hangman-1.png";
     break;
     case 2:
-    img.src="Hangman-2.png";
+    man.src="Hangman-2.png";
     break;
     case 3:
-    img.src="Hangman-3.png";
+    man.src="Hangman-3.png";
     break;
     case 4:
-    img.src="Hangman-4.png";
+    man.src="Hangman-4.png";
     break;
     case 5:
-    img.src="Hangman-5.png";
+    man.src="Hangman-5.png";
     break;
     case 6:
-    img.src="Hangman-6.png";
+    man.src="Hangman-6.png";
     stopInterval();
     var youLose = document.getElementById("youLose");
     youLose.innerHTML = "Sorry ... game over :(";
@@ -99,7 +126,7 @@ function hangingGuy() {
     playAgain();
     break;
     default:
-    img.src = "Hangman-0.png";
+    man.src = "Hangman-0.png";
     break;
   }
 }
@@ -112,8 +139,8 @@ function playAgain() {
   var againButtonName = document.createTextNode("To Play Again!");
   againButton.appendChild(againButtonName);
   againButton.addEventListener("click", function() {
-  // var logo = getElementById("home");
-  a.href="index.html";
+    console.log("in function");
+    window.location.href = "index.html";
 });
   header.appendChild(againButton);
 }

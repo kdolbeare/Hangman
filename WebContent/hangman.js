@@ -43,20 +43,13 @@ function listScoresClicked() {
   console.log("clicked");
   getData("rest/scores", listScores);
 }
-
+//list top ten scores
 function listScores(scores) {
-  // var removeTable = document.getElementById("table");
-  // if(removeTable) {
-  //   removeTable.parentNode.removeChild(removeTable);
-  // }
-  // var removeTimer = document.getElementById("timer")
-  // removeTimer.innerHTML= "";
   clearData();
   var body = document.querySelector("body");
   var table = document.createElement("table");
   table.setAttribute("id", "table");
   var thr = document.createElement("tr");
-  // for(var key in scores[0]) {}
     var th0 = document.createElement("th");
     th0.innerHTML= "Rank";
     thr.appendChild(th0);
@@ -80,7 +73,6 @@ function listScores(scores) {
     }
   for (var i=0; i<s; i++) {
     var tr = document.createElement("tr");
-    // for(var key in scores[i]) {}
       var td0 = document.createElement("td");
       td0.innerHTML = i+1;
       tr.appendChild(td0);
@@ -101,6 +93,7 @@ function listScores(scores) {
   body.appendChild(table);
 }
 
+//shows up after winning to add initials
 function addScoreButton() {
   var body = document.querySelector("body");
   var addButton = document.createElement("button");
@@ -111,6 +104,7 @@ function addScoreButton() {
   body.appendChild(addButton);
 }
 
+//persisting the winners info
 function addScore(e) {
   e.preventDefault();
   var removeAdd = document.getElementById("addButton");
@@ -140,15 +134,11 @@ function addScore(e) {
     if(remove) {
       remove.parentNode.removeChild(remove);
     }
-    var removeAdd = document.getElementById("addButton");
-    if(removeAdd) {
-      removeAdd.parentNode.removeChild(removeAdd);
-    }
-    // addStartButton();
-    // keyStrokes();
-    clearData();
+    listScores();
+    playAgain();
   });
 }
+
 function clearData() {
   var removeTable = document.getElementById("table");
   if(removeTable) {
@@ -157,15 +147,25 @@ function clearData() {
   var removeTimer = document.getElementById("timer")
   removeTimer.innerHTML= "";
   var removeMisses = document.getElementById("wrongLetters");
-  if(removeMisses) {
-    removeMisses.parentNode.removeChild(removeMisses);
-  }
+  removeMisses.innerHTML = "";
   var removeWord = document.getElementById("wordDiv");
-  if(removeWord) {
-    removeWord.parentNode.removeChild(removeWord);
-  }
+  removeWord.innerHTML = "";
   var removeYouWin = document.getElementById("youWin");
   removeYouWin.innerHTML = "";
   var removeYouLose = document.getElementById("youLose");
   removeYouLose.innerHTML = "";
+  var removeCategory = document.getElementById("category");
+  removeCategory.innerHTML = "";
+  var removeClueButton = document.getElementById("clueButton");
+  if(removeClueButton) {
+    removeClueButton.parentNode.removeChild(removeClueButton);
+  }
+  var removeClue = document .getElementById("clue");
+  removeClue.innerHTML = "";
+  var removeAdd = document.getElementById("addButton");
+  if(removeAdd) {
+    removeAdd.parentNode.removeChild(removeAdd);
+  var remove = document.getElementById("scoreForm");
+  remove.innerHTML = "";
+  }
 }

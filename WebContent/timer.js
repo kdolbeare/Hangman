@@ -9,6 +9,7 @@ function addStartButton () {
   header.appendChild(startButton);
 }
 
+//after clicking start button
 function clearStartButton () {
   //clear high scores:
   var removeTable = document.getElementById("table");
@@ -22,6 +23,7 @@ function clearStartButton () {
   getPhrase();
 }
 
+//adding timer
 var intervalId;
 function startInterval(i) {
   intervalId = setInterval(function() {
@@ -47,6 +49,8 @@ function startInterval(i) {
 //   stopInterval();
 //   addStartButton();
 // }
+
+//stop timer & capture time
 var myTime;
 function stopInterval() {
   //stopping extra add Initials buttons
