@@ -46,10 +46,10 @@ function listScoresClicked() {
 //list top ten scores
 function listScores(scores) {
   clearData();
-  var removeInstructions = document.getElementById("instructions");
-  if(removeInstructions) {
-    removeInstructions.parentNode.removeChild(removeInstructions);
-  }
+  // var removeInstructions = document.getElementById("instructions");
+  // if(removeInstructions) {
+  //   removeInstructions.parentNode.removeChild(removeInstructions);
+  // }
   var body = document.querySelector("body");
   var table = document.createElement("table");
   table.setAttribute("id", "table");

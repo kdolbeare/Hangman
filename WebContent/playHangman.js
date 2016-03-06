@@ -123,16 +123,15 @@ function hangingGuy() {
     break;
     case 6:
     man.src="Hangman-6.png";
+    playAgain();
     stopInterval();
     var youLose = document.getElementById("youLose");
     youLose.innerHTML = "Sorry ... game over :(";
     body.appendChild(youLose);
-    playAgain()();
     var removeInstructions = document.getElementById("instructions");
     if(removeInstructions) {
       removeInstructions.parentNode.removeChild(removeInstructions);
     }
-
     break;
     default:
     man.src = "Hangman-0.png";
@@ -149,8 +148,16 @@ function playAgain() {
   var againButtonName = document.createTextNode("Play Again!");
   againButton.appendChild(againButtonName);
   header.appendChild(againButton);
+  // againButton.addEventListener("click", goToIndex);
+
   againButton.addEventListener("click", function() {
     console.log("in function");
     window.location.assign("index.html");
   });
+
 }
+
+// var goToIndex = function() {
+//   console.log("in function");
+//   window.location.assign("index.html");
+// }
