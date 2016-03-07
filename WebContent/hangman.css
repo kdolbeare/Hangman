@@ -76,7 +76,7 @@ Button {
     background-color:  #d0e1e1;
     padding: 10px 20px;
     /*text-align: center;*/
-    /*text-decoration: none;*/
+    text-decoration: none;
     display: inline-block;
     font-size: 18px;
     /*margin: 4px 2px;*/

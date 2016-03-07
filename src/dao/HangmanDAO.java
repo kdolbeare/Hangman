@@ -43,7 +43,7 @@ public class HangmanDAO
 //		String rowNum = "SELECT COUNT p.id FROM Phrase p";
 //		Query num = em.createQuery(rowNum, Phrase.class);
 //		int max = (Integer)num.getSingleResult();
-		int max = 3;
+		int max = 16;
 		int min = 1;
 		Random r = new Random();
 		int id = r.nextInt((max - min) +1) +min;
