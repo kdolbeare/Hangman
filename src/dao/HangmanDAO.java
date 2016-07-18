@@ -27,6 +27,7 @@ public class HangmanDAO
 		String query = "select s from Score s";
 		Query q = em.createQuery(query, Score.class);
 		List<Score> scores = q.getResultList();
+		//sorting based on the time, which I defined in Score.java
 		Collections.sort(scores, new Score());
 		return scores;
 	}

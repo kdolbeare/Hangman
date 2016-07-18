@@ -9,7 +9,6 @@ var allGuesses = []; //all letters guessed
 var misses = []; //all wrong letters guessed
 
 function showPhrase (phrase) {
-  // var body = document.querySelector("body");
   var wordDiv = document.getElementById("wordDiv");
   var correct = document.createElement("ul");
   correct.setAttribute("id", "correctWord")
